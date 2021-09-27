@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" ltr="dir">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>10G class joiner [WIP]</title>
+	<style>
+		html,body {
+			height: 100%;
+			width: 100%;
+			margin: 0px;
+			padding: 0px;
+			overflow: hidden;
+		}
+		#pagewrapper {
+			width: 100%;
+			height: 100%;
+			margin: 0px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-image: repeating-linear-gradient(black, red, green, blue);
+		}
+		#main {
+			overflow-y: scroll;
+			width: 95%;
+			height: 90%;
+			border: 5px ridge green;
+		}
+		#content {
+			padding: 20px;
+			font-size: 20px;
+			font-family: sans-serif;
+		}
+		#linkbar {
+			text-align: center;
+			background-color: rgba(255, 255, 255, 0.1);
+		}
+		#title {
+			text-align: center;
+		}
+		table, th, td {
+			border-collapse: collapse;
+		}
+		th, td {
+			padding: 10px;
+			align-content: center;
+			text-align: center;
+		}
+		th {
+			color: black !important;
+		}
+		#themeswitch {
+			position: absolute;
+			top: 10%;
+			right: 5%;
+		}
+
+
+
+
+
+		.theme_light #main {
+			background-color: #FFF;
+		}
+		.theme_light a {
+			color: #008;
+		}
+		.theme_light a:visited {
+			color: #506;
+		}
+		.theme_light table,th,td {
+			border: 1px solid black;
+		}
+
+
+		.theme_dark #main {
+			background-color: #111;
+			color: #CCF;
+		}
+		.theme_dark a {
+			color: #66F;
+		}
+		.theme_dark a:visited {
+			color: #A3A;
+		}
+		.theme_dark table,th,td {
+			border: 1px solid blue;
+		}
+
+	</style>
+</head>
+<body>
+	<div id="pagewrapper" class="theme_dark">
+		<div id="main">
+			<header>
+				<nav id="linkbar">
+					<a href="joinclassmanually.html">this page</a> <a href="index.html">another page</a>
+				</nav>
+				<h1 id="title">Join a class manually</h1>
+				<span id="themeswitch">Dark theme</span>
+			</header>
+			<div id="content">
+				Note these links will only work when signed in with your school account.
+				<table id="classes">
+					<thead>
+						<tr>
+							<th></th>
+							<th style="background-color: #F70;">Math</th>
+							<th style="background-color: #FCC;">Chemistry</th>
+							<th style="background-color: #7AF;">Physics</th>
+							<th style="background-color: #0FF;">Misc</th>
+							<th style="background-color: #DAC;">Biology/ICT</th>
+							<th style="background-color: #FC0;">English</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Most common</td>
+							<td style="background-color: #F70;"><button id="Extended_Math">Extended Math</button></td>
+							<td style="background-color: #FCC;"><button id="Chemistry">Chemistry</button></td>
+							<td style="background-color: #7AF;"><button id="Physics">Physics</button></td>
+							<td style="background-color: #0FF;"><button id="Computer_Science">Computer Science</button></td>
+							<td style="background-color: #DAC;"><button id="Biology">Biology</button></td>
+							<td style="background-color: #FC0;"><button id="English">English</button></td>
+						</tr>
+						<tr>
+							<td>Or</td>
+							<td style="background-color: #F70;"><button id="Add Math">Add Math</a></td>
+							<td style="background-color: #FCC;"></td>
+							<td style="background-color: #7AF;"></td>
+							<td style="background-color: #0FF;"><button id="Spanish">Spanish</a></td>
+							<td style="background-color: #DAC;"><button id="ICT">ICT</a></td>
+							<td style="background-color: #FC0;"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<script>
+		let classes = {
+			"Ext_Math": "undefined",
+			"Chemistry":"bq2btqec47",
+			"Add Math":	"a26w2j3vpm",
+			"Physics":	"cyfcaa5z2n",
+			"Comp_Sci": "undefined",
+			"Spanish":	"c32bsj74bk",
+			"Biology":	"undefined",
+			"ICT":			"enplikbfp3",
+			"English":	"bbinveocrt",
+		};
+		function openLink(id){
+			window.open(`https://meet.google.com/lookup/${classes[id]}?authuser=0&hs=179`);
+		}
+		for(var button of document.getElementsByTagName("button")){
+			button.onclick = (event) => {
+				console.log(event.target.id);
+				openLink(event.target.id);
+			}
+		}
+
+
+		let themeswitch = document.getElementById("themeswitch");
+		let pagewrapper = document.getElementById("pagewrapper");
+		if(document.cookie){
+			if(document.cookie == "light"){
+				pagewrapper.classList.remove("theme_dark");
+				pagewrapper.classList.add("theme_light");
+				themeswitch.innerHTML = "Light theme";
+			}
+		}
+		themeswitch.onclick = () => {
+			if(themeswitch.innerHTML == "Dark theme"){
+				themeswitch.innerHTML = "Light theme";
+				pagewrapper.classList.remove("theme_dark");
+				pagewrapper.classList.add("theme_light");
+				document.cookie = "light";
+			} else {
+				themeswitch.innerHTML = "Dark theme";
+				pagewrapper.classList.remove("theme_light");
+				pagewrapper.classList.add("theme_dark");
+				document.cookie = "dark";
+			}
+		}
+	</script>
+</body>
+</html>

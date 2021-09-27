@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" ltr="dir">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>10G class joiner [WIP] home page</title>
+	<style>
+		html,body {
+			height: 100%;
+			width: 100%;
+			margin: 0px;
+			padding: 0px;
+			overflow: hidden;
+		}
+		#pagewrapper {
+			width: 100%;
+			height: 100%;
+			margin: 0px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-image: repeating-linear-gradient(black, red, green, blue);
+		}
+		#main {
+			overflow-y: scroll;
+			width: 95%;
+			height: 90%;
+			border: 5px ridge green;
+		}
+		#content {
+			padding: 20px;
+			font-size: 20px;
+			font-family: sans-serif;
+		}
+		#linkbar {
+			text-align: center;
+			background-color: rgba(255, 255, 255, 0.1);
+		}
+		#title {
+			text-align: center;
+		}
+		#themeswitch {
+			position: absolute;
+			top: 10%;
+			right: 5%;
+		}
+
+
+		.theme_light #main {
+			background-color: #FFF;
+		}
+		.theme_light a {
+			color: #008;
+		}
+		.theme_light a:visited {
+			color: #506;
+		}
+
+
+		.theme_dark #main {
+			background-color: #111;
+			color: #CCF;
+		}
+		.theme_dark a {
+			color: #66F;
+		}
+		.theme_dark a:visited {
+			color: #A3A;
+		}
+
+
+	</style>
+</head>
+<body>
+	<div id="pagewrapper" class="theme_dark">
+		<div id="main">
+			<header>
+				<nav id="linkbar">
+					<a href="#">this page</a> <a href="joinclassmanually.html">another page</a>
+				</nav>
+				<h1 id="title">10G classes stuff home page</h1>
+				<span id="themeswitch">Dark theme</span>
+			</header>
+			<div id="content">
+				<p>
+					This is a tool to let you quickly join the right class.
+				</p>
+				<p>
+					Eventually it will automatically tell you when to join class, etc. but for now it just has a table with all the links
+				</p>
+				<div id="joinclass">
+					<!-- The current class is <span id="classname">[]</span>, <a href="#" onclick="alert(`not loaded 🤷‍♀️`)" id="classlink">click here to join</a><br>
+					<a href="joinclassmanually.html">Or join a class manually</a> -->
+					<a href="joinclassmanually.html">Automatic choosing of the right link is not yet implemented please click here</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		let themeswitch = document.getElementById("themeswitch");
+		let pagewrapper = document.getElementById("pagewrapper");
+		if(document.cookie){
+			if(document.cookie == "light"){
+				pagewrapper.classList.remove("theme_dark");
+				pagewrapper.classList.add("theme_light");
+				themeswitch.innerHTML = "Light theme";
+			}
+		}
+		themeswitch.onclick = () => {
+			if(themeswitch.innerHTML == "Dark theme"){
+				themeswitch.innerHTML = "Light theme";
+				pagewrapper.classList.remove("theme_dark");
+				pagewrapper.classList.add("theme_light");
+				document.cookie = "light";
+			} else {
+				themeswitch.innerHTML = "Dark theme";
+				pagewrapper.classList.remove("theme_light");
+				pagewrapper.classList.add("theme_dark");
+				document.cookie = "dark";
+			}
+		}
+	</script>
+</body>
+</html>

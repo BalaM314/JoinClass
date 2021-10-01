@@ -106,6 +106,7 @@
 					<thead>
 						<tr>
 							<th></th>
+							<th style="background-color: #838;">Mentor Period</th>
 							<th style="background-color: #F70;">Math</th>
 							<th style="background-color: #FCC;">Chemistry</th>
 							<th style="background-color: #7AF;">Physics</th>
@@ -117,15 +118,17 @@
 					<tbody>
 						<tr>
 							<td>Most common</td>
-							<td style="background-color: #F70;"><button id="Extended_Math">Extended Math</button></td>
+							<td style="background-color: #838;"><button id="MP">Mentor Period</button></td>
+							<td style="background-color: #F70;"><button id="Ext_Math">Extended Math</button></td>
 							<td style="background-color: #FCC;"><button id="Chemistry">Chemistry</button></td>
 							<td style="background-color: #7AF;"><button id="Physics">Physics</button></td>
-							<td style="background-color: #0FF;"><button id="Computer_Science">Computer Science</button></td>
+							<td style="background-color: #0FF;"><button id="Comp_Sci">Computer Science</button></td>
 							<td style="background-color: #DAC;"><button id="Biology">Biology</button></td>
 							<td style="background-color: #FC0;"><button id="English">English</button></td>
 						</tr>
 						<tr>
 							<td>Or</td>
+							<td style="background-color: #838;"></td>
 							<td style="background-color: #F70;"><button id="Add Math">Add Math</a></td>
 							<td style="background-color: #FCC;"></td>
 							<td style="background-color: #7AF;"></td>
@@ -135,12 +138,14 @@
 						</tr>
 					</tbody>
 				</table>
-				If you report this as link sharing you are <span title="SUS">sussy amogus</span>.
+				By using this site you agree to the following: If you report this as link sharing you are <span title="SUS" style="text-shadow: 2px 2px rgba(255,0,0,0.7);">sussy amogus</span>.
 			</div>
 		</div>
 	</div>
+	<script src="main.js"></script>
 	<script>
 		let classes = {
+			"MP": 			"hnpu73fhkm",
 			"Ext_Math": "undefined",
 			"Chemistry":"bq2btqec47",
 			"Add Math":	"a26w2j3vpm",
@@ -158,30 +163,6 @@
 			button.onclick = (event) => {
 				console.log(event.target.id);
 				openLink(event.target.id);
-			}
-		}
-
-
-		let themeswitch = document.getElementById("themeswitch");
-		let pagewrapper = document.getElementById("pagewrapper");
-		if(document.cookie){
-			if(document.cookie == "light"){
-				pagewrapper.classList.remove("theme_dark");
-				pagewrapper.classList.add("theme_light");
-				themeswitch.innerHTML = "Light theme";
-			}
-		}
-		themeswitch.onclick = () => {
-			if(themeswitch.innerHTML == "Dark theme"){
-				themeswitch.innerHTML = "Light theme";
-				pagewrapper.classList.remove("theme_dark");
-				pagewrapper.classList.add("theme_light");
-				document.cookie = "light";
-			} else {
-				themeswitch.innerHTML = "Dark theme";
-				pagewrapper.classList.remove("theme_light");
-				pagewrapper.classList.add("theme_dark");
-				document.cookie = "dark";
 			}
 		}
 	</script>
